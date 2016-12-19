@@ -174,15 +174,18 @@ class Glift {
 		$html =
 			"\n\r<div id='$divId' style='$style'></div>".
 			"\n\r<script type='text/javascript'>".
-			"gliftWidget = glift.create($json);</script>\n\r<p>&nbsp;</p>\n\r".
-			"<div align ='center'><noscript>$noscript</noscript> ";
+			"gliftWidget = glift.create($json);</script>\n\r".
+			"<div align ='center'><noscript>$noscript</noscript>";
 
-			// add a hyperlink to download the SGF if appropriate
-			if ( $download && TRUE != $this->nolink )
-			$html .= 	"<a href='$download' download>$anchor</a>";
+			// add a hyperlink to download the SGF if appropriate and some
+			// whitespace.
+			if ( $download && TRUE != $this->nolink ) {
+				$html .= "\n\r<p></p>\n\r".
+					"<a href='$download' download>$anchor</a>";
+			}
 
-			// close the <div> tag and add some white space
-			$html .= "</div>\n\r<p>&nbsp;</p>";
+			// close the centering <div> tag
+			$html .= "</div>\n\r<p></p>";
 
 		return $html;
 	}
